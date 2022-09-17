@@ -9,3 +9,10 @@ You should be able to start the project by running: npm start. Open your browser
 
 ## Working with Pug
 To work with pug, we can use the pug-cli: npm install pug-cli -g. This will allow us to parse the pug files into plain html by running the following command: pug -w ./views -o ./public/html -P.
+
+## libraries used
+```
+https://flowbite.com/docs/components/modal/
+https://pugjs.org/language/interpolation.html
+https://tailwindcss.com/
+```
