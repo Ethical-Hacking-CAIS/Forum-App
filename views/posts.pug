@@ -1,0 +1,19 @@
+extends shared/nav
+include components/post
+
+block posts
+  div(class="divide-y divide-gray-200 dark:divide-gray-700")
+    div(class="space-y-2 pt-6 pb-8 md:space-y-5")
+      h1(class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14")
+        | Posts
+      p(class="text-lg leading-7 text-gray-500 dark:text-gray-400")
+        | A blog created for DoS / DDoS / DRoS attacks
+    - const mockPost = { "title": "Images in Next.js", "date": "2020-11-11", "summary": "In this article we introduce adding images in the tailwind starter blog and the benefits and limitations of the next/image component.", "author": ["sparrowhawk"] };
+    - const posts = [mockPost];
+    ul(class="divide-y divide-gray-200 dark:divide-gray-700")
+      for post in posts 
+        +post(post)
+      else 
+        strong There are no posts available          
+                    
+

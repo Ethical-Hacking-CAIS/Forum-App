@@ -1,0 +1,20 @@
+extends ../components/section-container
+
+block content
+  div(class="flex h-screen flex-col justify-between")
+    header(class="flex items-center justify-between py-10")
+      div 
+        div(class="flex items-center justify-between")
+          div(class="mr-3")
+            | Blog app
+      div(class="flex items-center text-base leading-5")
+        div(class="hidden sm:block")
+          a(class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4" href="") 
+            | Create Post
+          a(class="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4" href="") 
+            | Login
+        include ../components/theme-switch
+    main(class="mb-auto")
+      block posts
+
+        
