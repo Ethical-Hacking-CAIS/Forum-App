@@ -10,6 +10,7 @@ export const getIndexPage = async (req: Request, res: Response, next: NextFuncti
     let pageInfo: any = {}
     pageInfo.formatDate = formatDate
     pageInfo.currentPosts = result
+    pageInfo.isLoggedIn = req.cookies.isLoggedIn; // setup a cookie on login or signup success
     res
       .status(200)
       .render('posts', pageInfo)

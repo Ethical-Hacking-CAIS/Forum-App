@@ -4,6 +4,7 @@ import { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors'
 import logger from 'morgan'
 import express from 'express'
+import cookieParser from 'cookie-parser';
 import { createConnection, con } from './db-connection'
  
 import viewRouter from './routes/viewRoutes'
@@ -24,6 +25,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 // views
 app.use('/', viewRouter);
