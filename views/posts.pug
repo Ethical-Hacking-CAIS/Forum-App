@@ -8,10 +8,8 @@ block posts
         | Posts
       p(class="text-lg leading-7 text-gray-500 dark:text-gray-400")
         | A blog created for DoS / DDoS / DRoS attacks
-    - const mockPost = { "title": "Images in Next.js", "date": "2020-11-11", "summary": "In this article we introduce adding images in the tailwind starter blog and the benefits and limitations of the next/image component.", "author": ["sparrowhawk"] };
-    - const posts = [mockPost];
     ul(class="divide-y divide-gray-200 dark:divide-gray-700")
-      for post in posts 
+      for post in currentPosts
         +post(post)
       else 
         strong There are no posts available     

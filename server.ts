@@ -1,13 +1,18 @@
+require('dotenv').config()
+import path from 'path'
 import { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors'
 import logger from 'morgan'
-var path = require('path');
 import express from 'express'
+import { createConnection, con } from './db-connection'
+ 
+import viewRouter from './routes/viewRoutes'
 
-import indexRouter from './routes/index'
-import loginRouter from './routes/login'
-import signupRouter from './routes/signup'
-// import aboutRouter from './routes/about'
+createConnection()
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+})
 
 const app = express()
 
@@ -19,9 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/signup', signupRouter);
+app.use('/', viewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

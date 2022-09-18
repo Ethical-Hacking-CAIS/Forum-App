@@ -9,10 +9,10 @@ if (createPostForm) {
     const postSummary = document.getElementById('summary')
     const date = new Date()
     console.log(postTitle.value, postSummary.value, date)
+    // await createPost(postTitle, postSummary, date);
     const closeBtn = document.getElementById('close-btn')
     closeBtn.click()
     postTitle.value = ""
     postSummary.value = ""
-    // await createPost(postTitle, postSummary, date);
   })
 }
