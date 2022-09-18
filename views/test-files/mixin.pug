@@ -1,0 +1,31 @@
+// mixin can contain argument or extra data within parentheses (mixins can contain any pug feature)
+mixin comment(commentData)
+  .comment 
+    if commentData.postedByAdmin 
+      em (Posted by admin)
+    .date=commentData.date
+    .author=commentData.author
+    .text=commentData.text 
+
+doctype html 
+html 
+  head 
+    title Mixins in Pug 
+    style. 
+      .comment {
+        font-family: sans-serif;
+        line-height: 1.5;
+        padding: 10px;
+        border: 1px solid #555;
+        width: 250px;
+      }
+
+      .date { font-size: 85%; text-align: right; }
+      .author { font-size: 110%; font-weight: bold; }
+      .text { font-size: 100%; }
+  body
+    // mixins are reusable blocks of pug code (they behave like functions)
+    - const c = { postedByAdmin: true, date: '04-02-2018', author: 'dcode', text: 'Hey homie yei' }
+    +comment(c)
+    - const c2 = { date: '07-02-2020', author: 'Bruce', text: 'Hey my g' }
+    +comment(c2)

@@ -1,0 +1,19 @@
+// Main modal
+#post-modal.hidden.overflow-y-auto.overflow-x-hidden.fixed.top-0.right-0.left-0.z-50.w-full.h-modal(tabindex='-1' aria-hidden='true' class='md:inset-0 md:h-full')
+  .relative.p-4.w-full.max-w-md.h-full(class='md:h-auto')
+    // Modal content
+    .relative.bg-white.rounded-lg.shadow(class='dark:bg-gray-700')
+      button#close-btn.absolute.top-3.text-gray-400.bg-transparent.rounded-lg.text-sm.ml-auto.inline-flex.items-center(type='button' class='right-2.5 hover:bg-gray-200 hover:text-gray-900 p-1.5 dark:hover:bg-gray-800 dark:hover:text-white' data-modal-toggle='post-modal')
+        svg.w-5.h-5(aria-hidden='true' fill='currentColor' viewbox='0 0 20 20' xmlns='http://www.w3.org/2000/svg')
+          path(fill-rule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clip-rule='evenodd')
+        span.sr-only Close modal
+      .py-6.px-6(class='lg:px-8')
+        h3.mb-4.text-xl.font-medium.text-gray-900(class='dark:text-white') Create a post
+        form.space-y-6.create--post
+          div
+            label.block.mb-2.text-sm.font-medium.text-gray-900(for='title' class='dark:text-gray-300') Post title
+            input#title.bg-gray-50.border.border-gray-300.text-gray-900.text-sm.rounded-lg.block.w-full(type='text' name='title' class='focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white' placeholder='your post title...' required=true)
+          div
+            label.block.mb-2.text-sm.font-medium.text-gray-900(for='summary' class='dark:text-gray-300') Post summary
+            textarea#summary.bg-gray-50.border.border-gray-300.text-gray-900.text-sm.rounded-lg.block.w-full(name='summary' placeholder='post summary' class='focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white' required=true)
+          button.w-full.text-white.bg-blue-700.font-medium.rounded-lg.text-sm.px-5.text-center(type='submit' class='hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800') Create post

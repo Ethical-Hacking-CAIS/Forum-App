@@ -1,0 +1,17 @@
+doctype html 
+html 
+  head 
+    title Conditionals in Pug 
+  body 
+    h2 My Web Application
+    - let user = { name: "Dominic", loggedIn: false, lastLogin: 6 } // the | character forces what's to its left to be plain text instead of an html tag
+    if user.loggedIn 
+      p 
+        | Welcome back, 
+        strong #{ user.name }
+    else if user.lastLogin < 10
+      p Your Last login was #{ user.lastLogin }
+      p 
+        a(href="/login") Log in again
+    else 
+      a(href="/login") Log In

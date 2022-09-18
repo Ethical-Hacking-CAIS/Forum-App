@@ -4,7 +4,9 @@
   "description": "Forum app",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./bin/www"
+    "start": "ts-node ./bin/www",
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/styles.css",
+    "build:js": "parcel build ./public/javascript/index.js --out-dir ./public/javascript --out-file bundle.js"
   },
   "repository": {
     "type": "git",
@@ -18,14 +20,23 @@
   },
   "homepage": "https://github.com/Ethical-Hacking-CAIS/Forum-App#readme",
   "dependencies": {
+    "@fontsource/inter": "4.5.2",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.4.11",
     "express": "^4.18.1",
     "http-errors": "^2.0.0",
-    "jade": "^1.11.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "pug": "^3.0.2",
+    "rehype-katex": "^6.0.2",
+    "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/http-errors": "^1.8.2",
-    "@types/morgan": "^1.9.3"
+    "@types/morgan": "^1.9.3",
+    "parcel-bundler": "^1.12.5"
   }
 }
