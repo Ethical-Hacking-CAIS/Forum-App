@@ -4,9 +4,11 @@ import { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors'
 import logger from 'morgan'
 import express from 'express'
+import cookieParser from 'cookie-parser';
 import { createConnection, con } from './db-connection'
  
 import viewRouter from './routes/viewRoutes'
+import postRouter from './routes/postRoutes'
 
 createConnection()
 con.connect(function(err) {
@@ -23,8 +25,13 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
+// views
 app.use('/', viewRouter);
+
+// api endpoints
+app.use('/api/posts', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
