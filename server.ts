@@ -9,6 +9,7 @@ import { createConnection, con } from './db-connection'
  
 import viewRouter from './routes/viewRoutes'
 import postRouter from './routes/postRoutes'
+import userRouter from './routes/userRoutes'
 
 createConnection()
 con.connect(function(err) {
@@ -32,6 +33,8 @@ app.use('/', viewRouter);
 
 // api endpoints
 app.use('/api/posts', postRouter);
+
+app.use('/api/users',userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

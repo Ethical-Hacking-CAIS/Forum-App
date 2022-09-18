@@ -1,7 +1,68 @@
 // DOM ELEMENTS
 const createPostForm = document.querySelector('.create--post');
+const createUserForm = document.querySelector('.create--user');
+const loginUserForm = document.querySelector('.login--user');
 
 // DELEGATION
+if (createUserForm) {
+  createUserForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const email = document.getElementById('email')
+    const password = document.getElementById('password')
+
+    try {
+      await fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email.value,
+          password: password.value,
+        })
+      })
+    } catch (error) {
+      console.log(error)
+    } finally {
+      email.value = ""
+      password.value = ""
+
+      location.replace("/");
+    }
+  })
+}
+
+if (loginUserForm) {
+  loginUserForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const email = document.getElementById('email')
+    const password = document.getElementById('password')
+
+    try {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email.value,
+          password: password.value,
+        })
+      })
+
+      email.value = ""
+      password.value = ""
+      if (response.status==200){
+        location.replace("/");
+      }
+     
+    } 
+    catch (error) {
+      console.log(error)
+    } 
+  })
+}
+
 if (createPostForm) {
   createPostForm.addEventListener('submit', async (e) => {
     e.preventDefault()
