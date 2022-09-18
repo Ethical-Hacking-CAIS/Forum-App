@@ -7,6 +7,7 @@ import express from 'express'
 import { createConnection, con } from './db-connection'
  
 import viewRouter from './routes/viewRoutes'
+import postRouter from './routes/postRoutes'
 
 createConnection()
 con.connect(function(err) {
@@ -24,7 +25,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// views
 app.use('/', viewRouter);
+
+// api endpoints
+app.use('/api/posts', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
