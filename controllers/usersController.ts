@@ -1,6 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
-import { FieldInfo, MysqlError } from 'mysql'
+import { FieldInfo } from 'mysql'
 import { con } from '../db-connection'
+
+export const logoutUser = (req: Request, res: Response, next: NextFunction) => {
+  res.clearCookie('isLoggedIn')
+  res.end()
+}
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body
@@ -11,14 +16,14 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
     if (err) throw err;
     userId = result.insertId 
     console.log('User created with id: ' + userId);
-    res.cookie("isLoggedIn", true)
-  })
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      userId: userId
-    }
+    res
+      .cookie("isLoggedIn", email)
+      .status(200).json({
+        status: 'success',
+        data: {
+          userId: userId
+        }
+      })
   })
 }
 
@@ -30,19 +35,18 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
       if (err) throw err;
       if (result && result.length==0) isLoggedIn = false;
       if (isLoggedIn==true){
-        res.cookie("isLoggedIn", true)
-        res.status(200).json({
+        return res
+          .cookie("isLoggedIn", email)
+          .status(200).json({
             status: 'success',
             message: 'success'
           })
        }
        else {
-        res.status(404).json({
+        return res.status(404).json({
             status: 'failed',
             message: 'failed'
           })
        }
     })
-   
-    
   }

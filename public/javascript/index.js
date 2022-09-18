@@ -2,8 +2,22 @@
 const createPostForm = document.querySelector('.create--post');
 const createUserForm = document.querySelector('.create--user');
 const loginUserForm = document.querySelector('.login--user');
+const logoutBtn = document.getElementById('logout')
 
 // DELEGATION
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', async (e) => {
+    e.preventDefault()
+
+    try {
+      await fetch('/api/users/logout')
+    } catch (error) {
+      console.log(error)
+    } finally {
+      location.replace("/login");
+    }
+  })
+}
 if (createUserForm) {
   createUserForm.addEventListener('submit', async (e) => {
     e.preventDefault()
