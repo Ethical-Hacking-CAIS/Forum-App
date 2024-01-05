@@ -33,8 +33,7 @@ app.use('/', viewRouter);
 
 // api endpoints
 app.use('/api/posts', postRouter);
-
-app.use('/api/users',userRouter);
+app.use('/api/users', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
